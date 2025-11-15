@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mesra Vet Clinic</title>
+  <link rel="stylesheet" href="">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0056b3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Added: Logo image styling */
+    .logo-img {
+      width: 250px;        /* wider logo */
+      height: 55px;       /* slightly shorter height for a rectangular shape */
+      margin-right: 15px; /* good spacing from text */
+      border-radius: 0;   /* keeps sharp square corners */
+      object-fit: cover;  /* ensures image doesn’t stretch */
+    }
+
+    .navbar .links a {
+      color: white;               /* white font color */
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      margin-left: 30px;          /* spacing between links */
+      transition: color 0.3s ease;
+      background: none;           /* remove white box */
+      padding: 0;                 /* no padding */
+      border-radius: 0;           /* remove rounded edges */
+    }
+
+    .navbar .links a:hover {
+      color: #7db6f3;             /* bright blue on hover */
+    }
+
+    .login-btn {
+      background-color: #fff;
+      color: #0056b3;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #e6f0ff;
+    }
+
+    /* MAIN SECTION */
+    #main-section {
+      height: 60vh;
+      background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    #main-section .card {
+      background: white;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
+
+    .card h2 {
+      color: #0074cc;
+      margin-bottom: 20px;
+    }
+
+    .book-btn {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .book-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* ABOUT SECTION */
+    #about {
+      background-color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    #about h2 {
+      color: #0074cc;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    #about p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* SERVICES SECTION */
+    #services {
+      background-color: #e6f0ff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    #services h2 {
+      color: #0056b3;
+      font-size: 30px;
+      margin-bottom: 40px;
+    }
+
+    .service-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .service-card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 270px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-card h3 {
+      color: #0056b3;
+      margin-bottom: 10px;
+    }
+
+    
+    /* LOGIN SECTION */
+    .login-section {
+      display: none;
+      margin-top: 120px;
+      text-align: center;
+    }
+
+    .login-box {
+      background-color: #f7f7f7;
+      padding: 40px;
+      border-radius: 15px;
+      width: 380px;
+      margin: 40px auto;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-box h2 {
+      color: #333;
+      margin-bottom: 25px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .login-box h3 {
+      color: #0056b3;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+   
+    .login-box input {
+      width: 100%; 
+      padding: 12px; 
+      margin: 12px 0; 
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .login-box button {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      width: 100%;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 20px;
+    }
+
+    .login-box p {
+      margin: 20px 0 5px 0; 
+    }
+
+    .login-box button:hover {
+      background-color: #004090;
+      transform: scale(1.02);
+    }
+
+    .signup-text {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .signup-text a {
+      color: #0056b3;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .signup-text a:hover {
+      text-decoration: underline;
+    }
+
+      /* BACK BUTTON */
+    .back-btn {
+      margin-top: 20px;
+      background-color: #d9d9d9;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #b3b3b3;
+    }
+
+
+    
+  </style>
+
+  <script>
+    function showPetOwnerLogin() {
+      document.getElementById("main-section").style.display = "none";
+      document.getElementById("staff-login-section").style.display = "none";
+      document.getElementById("signup-section").style.display = "none";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("services").style.display = "none";
+      document.getElementById("petowner-login-section").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function showStaffLogin() {
+      document.getElementById("main-section").style.display = "none";
+      document.getElementById("petowner-login-section").style.display = "none";
+      document.getElementById("signup-section").style.display = "none";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("services").style.display = "none";
+      document.getElementById("staff-login-section").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function showSignup() {
+      document.getElementById("main-section").style.display = "none";
+      document.getElementById("staff-login-section").style.display = "none";
+      document.getElementById("petowner-login-section").style.display = "none";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("services").style.display = "none";
+      document.getElementById("signup-section").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      document.getElementById("petowner-login-section").style.display = "none";
+      document.getElementById("staff-login-section").style.display = "none";
+      document.getElementById("signup-section").style.display = "none";
+      document.getElementById("main-section").style.display = "block";
+      document.getElementById("about").style.display = "block";
+      document.getElementById("services").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+  </script>
+</head>
+
+<body>
+  
+  <div class="navbar">
+  <div class="logo" onclick="goBack()">
+    <img src="Clinic logo.png" alt="Mesra Vet Clinic Logo" class="logo-img">
+  </div>
+  <div class="links">
+    <a href="#about">ABOUT</a>
+    <a href="#services">SERVICES</a>
+    <a onclick="showPetOwnerLogin()">BOOK APPOINTMENT</a>
+  </div>
+  <button class="login-btn" onclick="showStaffLogin()">STAFF / ADMIN LOGIN</button>
+</div>
+
+
+  <!-- Main Section -->
+  <div id="main-section" class="content">
+    <div class="card">
+      <h2>Veterinary Care for Your Beloved Pets</h2>
+      <p>Schedule appointments with our experienced veterinarians to ensure your pet's health and happiness.</p>
+      <button class="book-btn" onclick="showPetOwnerLogin()">BOOK NOW</button>
+    </div>
+  </div>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-container">
+      <div class="service-card">
+        <h3>💉 Vaccination</h3>
+        <p>Protect your pets from common diseases with regular vaccinations.</p>
+      </div>
+      <div class="service-card">
+        <h3>🩺 Health Checkups</h3>
+        <p>Regular checkups to ensure your pets live a healthy and active life.</p>
+      </div>
+      <div class="service-card">
+        <h3>✂️ Grooming & Treatment</h3>
+        <p>Keep your pets looking great with our grooming and care services.</p>
+      </div>
+      <div class="service-card">
+        <h3>Other Treatment Available</h3>
+        <p>feel free to book your purpose of visit</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Mesra Vet Clinic provides compassionate veterinary care for pets in your neighborhood. 
+    Our mission is to keep your pets healthy, happy, and cared for with professional and friendly service.</p>
+  </section>
+
+  <!-- Pet Owner Login Section -->
+  <div id="petowner-login-section" class="login-section">
+    <h2>Book Appointment</h2>
+    <div class="login-box">
+      <h3>Welcome</h3>
+      <form action="process_login.php" method="POST">
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit">LOGIN</button>
+      </form>
+      <p>Don’t have an account?</p>
+      <button onclick="showSignup()">SIGN UP</button>
+    </div>
+    <button class="back-btn" onclick="goBack()">BACK</button>
+  </div>
+
+  <!-- Staff Login Section -->
+  <div id="staff-login-section" class="login-section">
+    <h2>Staff / Admin Login</h2>
+    <div class="login-box">
+      <h3>Welcome</h3>
+      <form action="process_staff_login.php" method="POST">
+        <input type="email" name="email" placeholder="email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit">LOGIN</button>
+      </form>
+    </div>
+    <button class="back-btn" onclick="goBack()">BACK</button>
+  </div>
+
+  <!-- Sign Up Section -->
+  <div id="signup-section" class="login-section">
+    <h2>Create an Account</h2>
+    <div class="login-box">
+      <h3>Sign Up</h3>
+      <form action="process_signup.php" method="POST">
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="text" name="phone" placeholder="Phone Number" required><br>
+        <input type="text" name="address" placeholder="Address" required><br>
+        <button type="submit">REGISTER</button>
+      </form>
+    </div>
+    <button class="back-btn" onclick="showPetOwnerLogin()">BACK TO LOGIN</button>
+  </div>
+
+  <footer></footer>
+</body>
+</html>
+
